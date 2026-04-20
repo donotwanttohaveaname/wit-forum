@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WiT Forum 2026 — Tech Horizons: Impacting our Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #73c1e5;
+    --peach: #fab07c;
+    --yellow: #fae47c;
+    --purple: #623cea;
+    --green: #026451;
+    --pink: #ff80f2;
+    --ink: #111111;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Work Sans', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.45;
+  }
+
+  body { overflow-x: hidden; }
+
+  a { color: inherit; }
+
+  /* ---------- Top bar ---------- */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .logo-mark {
+    font-weight: 900;
+    font-size: 36px;
+    letter-spacing: -1px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .logo-descriptor {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink);
+  }
+
+  .tagline {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 60px 48px 120px;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .headline {
+    font-weight: 900;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.95;
+    letter-spacing: -2px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .headline .accent {
+    color: var(--purple);
+  }
+
+  .lead {
+    font-weight: 400;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.35;
+    max-width: 680px;
+    margin-bottom: 48px;
+  }
+
+  .event-card {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 24px 32px;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    margin-bottom: 40px;
+  }
+
+  .event-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .event-item .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink);
+    opacity: 0.6;
+  }
+
+  .event-item .value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* ---------- Blob decorations + animations ---------- */
+  .blob {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* The blob SVG morphs its own path; the wrapper drifts around the page */
+  .blob svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    animation: spin var(--spin, 40s) linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes driftA {
+    0%   { transform: translate(0, 0) scale(1); }
+    25%  { transform: translate(40px, -30px) scale(1.05); }
+    50%  { transform: translate(-20px, 40px) scale(0.96); }
+    75%  { transform: translate(30px, 20px) scale(1.03); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
+  @keyframes driftB {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(-50px, 30px) scale(1.07); }
+    66%  { transform: translate(30px, -40px) scale(0.94); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
+  @keyframes driftC {
+    0%   { transform: translate(0, 0) scale(1); }
+    20%  { transform: translate(25px, 35px) scale(1.04); }
+    50%  { transform: translate(-30px, -25px) scale(0.97); }
+    80%  { transform: translate(40px, 10px) scale(1.08); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
+  .blob-1 { top: -80px; right: -120px; width: 520px; height: 520px; animation: driftA 18s ease-in-out infinite; }
+  .blob-2 { top: 320px; left: -140px; width: 380px; height: 380px; animation: driftB 22s ease-in-out infinite; }
+  .blob-3 { bottom: -100px; right: 10%; width: 260px; height: 260px; animation: driftC 15s ease-in-out infinite; }
+
+  .blob-1 svg { --spin: 55s; }
+  .blob-2 svg { --spin: 70s; animation-direction: reverse; }
+  .blob-3 svg { --spin: 40s; }
+
+  /* Morphing path (the actual blob silhouette breathes) */
+  .blob path {
+    animation: morph 14s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .blob-2 path { animation-duration: 18s; animation-delay: -3s; }
+  .blob-3 path { animation-duration: 11s; animation-delay: -7s; }
+  .about-blob-1 path { animation: morph 16s ease-in-out infinite; animation-delay: -4s; }
+  .about-blob-2 path { animation: morph 20s ease-in-out infinite; animation-delay: -9s; }
+  .closing-blob path { animation: morph 17s ease-in-out infinite; animation-delay: -2s; }
+
+  @keyframes morph {
+    0%, 100% { d: path("M460,120 C540,180 560,320 500,420 C440,520 300,560 190,520 C80,480 30,360 50,240 C70,120 200,50 320,60 C380,70 420,90 460,120 Z"); }
+    33%      { d: path("M480,140 C530,220 540,340 470,430 C400,520 270,540 170,490 C70,440 40,330 70,220 C100,110 210,60 330,80 C400,95 450,90 480,140 Z"); }
+    66%      { d: path("M450,100 C560,170 570,310 520,410 C470,510 290,570 180,520 C70,470 20,350 60,230 C100,110 230,40 340,50 C400,55 400,80 450,100 Z"); }
+  }
+
+  /* ---------- CTA button ---------- */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 40px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease;
+    text-transform: uppercase;
+  }
+
+  .cta:hover { background: var(--purple); transform: translateY(-2px); }
+  .cta:active { transform: translateY(0); }
+  .cta .arrow { font-size: 24px; line-height: 1; }
+
+  .cta-note {
+    display: block;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  /* ---------- About section ---------- */
+  .about {
+    position: relative;
+    background: var(--blue);
+    padding: 120px 48px;
+    overflow: hidden;
+  }
+
+  .about-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 32px;
+    letter-spacing: -1px;
+  }
+
+  .about p {
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .theme-block {
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--peach);
+    border-radius: 8px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .theme-block .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .theme-block h3 {
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--ink);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .about-blob-1 {
+    position: absolute;
+    top: -60px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    z-index: 1;
+    animation: driftB 24s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .about-blob-2 {
+    position: absolute;
+    bottom: -80px;
+    left: -60px;
+    width: 260px;
+    height: 260px;
+    z-index: 1;
+    animation: driftC 19s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .about-blob-1 svg,
+  .about-blob-2 svg,
+  .closing-blob svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    animation: spin var(--spin, 60s) linear infinite;
+  }
+
+  .about-blob-1 svg { --spin: 65s; }
+  .about-blob-2 svg { --spin: 50s; animation-direction: reverse; }
+  .closing-blob svg { --spin: 75s; }
+
+  /* ---------- What to expect ---------- */
+  .expect {
+    padding: 120px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .expect h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 48px;
+  }
+
+  .expect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+  }
+
+  .expect-card {
+    padding: 32px 28px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expect-card:nth-child(1) { background: var(--peach); color: var(--ink); }
+  .expect-card:nth-child(2) { background: var(--yellow); color: var(--ink); }
+  .expect-card:nth-child(3) { background: var(--green); color: var(--white); }
+  .expect-card:nth-child(4) { background: var(--purple); color: var(--white); }
+
+  .expect-card h3 {
+    font-weight: 900;
+    font-size: 22px;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .expect-card p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  /* ---------- Closing CTA ---------- */
+  .closing {
+    position: relative;
+    padding: 120px 48px;
+    background: var(--peach);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .closing-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .closing h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+  }
+
+  .closing p {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+  .closing-blob {
+    position: absolute;
+    right: -80px;
+    bottom: -80px;
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    animation: driftA 21s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--white);
+    border-top: 1px solid #eee;
+    flex-wrap: wrap;
+  }
+
+  .hashtag { font-weight: 700; }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.55);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--white);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 640px;
+    padding: 48px 44px;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+  }
+
+  .modal h2 {
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+
+  .modal .sub {
+    font-size: 16px;
+    margin-bottom: 32px;
+    color: var(--ink);
+    opacity: 0.8;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: var(--peach);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .close-btn:hover { background: var(--yellow); }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  .field label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .field input[type="text"],
+  .field input[type="email"],
+  .field select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e5e5e5;
+    border-radius: 6px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    background: var(--white);
+    transition: border-color 0.15s ease;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--purple);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 520px) {
+    .row { grid-template-columns: 1fr; }
+  }
+
+  .checkbox-field {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    background: #f7f7f7;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+
+  .checkbox-field input {
+    margin-top: 3px;
+    accent-color: var(--purple);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .checkbox-field span {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .submit {
+    width: 100%;
+    padding: 18px;
+    background: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 999px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.18s ease, transform 0.15s ease;
+    margin-top: 12px;
+  }
+
+  .submit:hover { background: var(--ink); transform: translateY(-1px); }
+
+  .success {
+    display: none;
+    text-align: center;
+    padding: 24px 12px;
+  }
+
+  .success.on { display: block; }
+
+  .success h3 {
+    font-weight: 900;
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .success p { font-size: 16px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob, .about-blob-1, .about-blob-2, .closing-blob,
+    .blob svg, .about-blob-1 svg, .about-blob-2 svg, .closing-blob svg,
+    .blob path, .about-blob-1 path, .about-blob-2 path, .closing-blob path {
+      animation: none !important;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .top-bar, .hero, .about, .expect, .closing, footer { padding-left: 24px; padding-right: 24px; }
+    .modal { padding: 32px 24px; }
+    .event-card { gap: 20px; padding: 18px 22px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="logo">
+      <span class="logo-mark">WiT</span>
+      <span class="logo-descriptor">Women in Tech Finland</span>
+    </div>
+    <span class="tagline">Tech belongs to us all</span>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <!-- Decorative blobs (animated) -->
+    <div class="blob blob-1" aria-hidden="true">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fab07c" d="M460,120 C540,180 560,320 500,420 C440,520 300,560 190,520 C80,480 30,360 50,240 C70,120 200,50 320,60 C380,70 420,90 460,120 Z"/>
+      </svg>
+    </div>
+    <div class="blob blob-2" aria-hidden="true">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#73c1e5" d="M460,120 C540,180 560,320 500,420 C440,520 300,560 190,520 C80,480 30,360 50,240 C70,120 200,50 320,60 C380,70 420,90 460,120 Z"/>
+      </svg>
+    </div>
+    <div class="blob blob-3" aria-hidden="true">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fae47c" d="M460,120 C540,180 560,320 500,420 C440,520 300,560 190,520 C80,480 30,360 50,240 C70,120 200,50 320,60 C380,70 420,90 460,120 Z"/>
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <p class="eyebrow">WiT Forum 2026 · Our Flagship Event</p>
+      <h1 class="headline">Tech Horizons:<br/><span class="accent">Impacting our Future</span></h1>
+      <p class="lead">A full day of keynotes, panels, workshops and meaningful conversations exploring how technology is shaping industries, careers and society.</p>
+
+      <div class="event-card">
+        <div class="event-item">
+          <span class="label">When</span>
+          <span class="value">22 October 2026</span>
+        </div>
+        <div class="event-item">
+          <span class="label">Time</span>
+          <span class="value">10:00 · 16:00</span>
+        </div>
+        <div class="event-item">
+          <span class="label">Where</span>
+          <span class="value">Wanha Satama, Helsinki</span>
+        </div>
+      </div>
+
+      <div>
+        <button class="cta" onclick="openModal()">
+          Pre-sign up for the WiT community
+          <span class="arrow">→</span>
+        </button>
+        <span class="cta-note">Free to join. Be first in line for Forum 2026 updates.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <div class="about-blob-1" aria-hidden="true">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fae47c" d="M460,120 C540,180 560,320 500,420 C440,520 300,560 190,520 C80,480 30,360 50,240 C70,120 200,50 320,60 C380,70 420,90 460,120 Z"/>
+      </svg>
+    </div>
+    <div class="about-blob-2" aria-hidden="true">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#623cea" d="M460,120 C540,180 560,320 500,420 C440,520 300,560 190,520 C80,480 30,360 50,240 C70,120 200,50 320,60 C380,70 420,90 460,120 Z"/>
+      </svg>
+    </div>
+
+    <div class="about-inner">
+      <h2>The WiT Forum is back, stronger, sharper, more yours.</h2>
+      <p>The Forum is our flagship event, bringing together tech-focused companies, professionals and role models for a day of learning, networking and inspiration.</p>
+      <p>After another successful Forum in 2024, we are building on your feedback to make 2026 an even more memorable edition. Every stage of your career belongs here, from early-career tech professionals to senior executives.</p>
+
+      <div class="theme-block">
+        <p class="label">Theme</p>
+        <h3>Tech Horizons: Impacting our Future</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to expect -->
+  <section class="expect">
+    <h2>What to expect</h2>
+    <div class="expect-grid">
+      <div class="expect-card">
+        <h3>Thought-provoking keynotes</h3>
+        <p>Industry leaders share the trends, research and ideas shaping the next decade of tech.</p>
+      </div>
+      <div class="expect-card">
+        <h3>Engaging panels</h3>
+        <p>Honest conversations about the real-world challenges of a more diverse and inclusive tech industry.</p>
+      </div>
+      <div class="expect-card">
+        <h3>Interactive workshops</h3>
+        <p>Hands-on sessions with practical, actionable insights you can apply the moment you leave the room.</p>
+      </div>
+      <div class="expect-card">
+        <h3>Community networking</h3>
+        <p>Meet peers, mentors and role models from across the Finnish tech ecosystem and beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="closing">
+    <div class="closing-blob" aria-hidden="true">
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#73c1e5" d="M460,120 C540,180 560,320 500,420 C440,520 300,560 190,520 C80,480 30,360 50,240 C70,120 200,50 320,60 C380,70 420,90 460,120 Z"/>
+      </svg>
+    </div>
+    <div class="closing-inner">
+      <h2>Join the community.<br/>Shape the future.</h2>
+      <p>Pre-sign up to join the WiT community and get early access to Forum 2026.</p>
+      <button class="cta" onclick="openModal()">
+        Pre-sign up
+        <span class="arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo">
+      <span class="logo-mark">WiT</span>
+      <span class="logo-descriptor">Women in Tech Finland</span>
+    </div>
+    <div>
+      <span class="hashtag">#ibelongintech</span> · Wanha Satama, Pikku Satamakatu 3-5, 00160 Helsinki
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal()" aria-label="Close">×</button>
+      <div id="form-state">
+        <h2 id="modal-title">Join the WiT community</h2>
+        <p class="sub">Free to join. We will share Forum 2026 updates, events and opportunities directly with you.</p>
+
+        <form id="signup-form" onsubmit="handleSubmit(event)">
+          <div class="field">
+            <label for="fullname">Full name</label>
+            <input type="text" id="fullname" name="fullname" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="industry">Industry</label>
+              <select id="industry" name="industry" required>
+                <option value="">Select</option>
+                <option>Software</option>
+                <option>Finance and FinTech</option>
+                <option>Healthcare and HealthTech</option>
+                <option>Manufacturing and Industry</option>
+                <option>Telecommunications</option>
+                <option>Education</option>
+                <option>Public sector</option>
+                <option>Consulting</option>
+                <option>Retail and E-commerce</option>
+                <option>Research and Academia</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="jobtitle">Job title</label>
+              <input type="text" id="jobtitle" name="jobtitle" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="seniority">Seniority</label>
+              <select id="seniority" name="seniority" required>
+                <option value="">Select</option>
+                <option>Student</option>
+                <option>Entry level</option>
+                <option>Mid-level</option>
+                <option>Senior</option>
+                <option>Lead or Principal</option>
+                <option>Manager</option>
+                <option>Director</option>
+                <option>Executive or C-level</option>
+                <option>Founder</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location" placeholder="City, country" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="agegroup">Age group</label>
+            <select id="agegroup" name="agegroup" required>
+              <option value="">Select</option>
+              <option>Under 18</option>
+              <option>18 to 24</option>
+              <option>25 to 34</option>
+              <option>35 to 44</option>
+              <option>45 to 54</option>
+              <option>55 to 64</option>
+              <option>65 and above</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+
+          <label class="checkbox-field">
+            <input type="checkbox" id="newsletter" name="newsletter" />
+            <span>Subscribe me to the WiT newsletter: events, activities, opportunities and more from Women in Tech Finland.</span>
+          </label>
+
+          <label class="checkbox-field">
+            <input type="checkbox" id="partnership" name="partnership" />
+            <span>I am interested in partnership opportunities with Women in Tech Finland (for my company or organisation).</span>
+          </label>
+
+          <label class="checkbox-field">
+            <input type="checkbox" id="gdpr" name="gdpr" required />
+            <span>I consent to Women in Tech Finland storing and processing the information I have provided, in line with the privacy policy (GDPR).</span>
+          </label>
+
+          <button type="submit" class="submit">Join the community</button>
+        </form>
+      </div>
+
+      <div class="success" id="success">
+        <h3>Welcome to the community.</h3>
+        <p>You are on the list. We will be in touch with Forum 2026 details and community updates.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function openModal() {
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('form-state').style.display = 'block';
+    document.getElementById('success').classList.remove('on');
+    document.getElementById('signup-form').reset();
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-state').style.display = 'none';
+    document.getElementById('success').classList.add('on');
+  }
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>
