@@ -45,24 +45,17 @@
 
   .logo {
     display: flex;
-    align-items: baseline;
-    gap: 12px;
+    align-items: center;
   }
 
-  .logo-mark {
-    font-weight: 900;
-    font-size: 36px;
-    letter-spacing: -1px;
-    color: var(--ink);
-    line-height: 1;
+  .logo img {
+    display: block;
+    height: 44px;
+    width: auto;
   }
 
-  .logo-descriptor {
-    font-weight: 700;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--ink);
+  .footer-logo img {
+    height: 32px;
   }
 
   .tagline {
@@ -76,12 +69,16 @@
   /* ---------- Hero ---------- */
   .hero {
     position: relative;
-    padding: 60px 48px 120px;
+    min-height: calc(100vh - 92px);
+    padding: 32px 48px 48px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
   .hero-inner {
     position: relative;
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto;
     z-index: 2;
@@ -89,20 +86,20 @@
 
   .eyebrow {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 3px;
     color: var(--ink);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .headline {
     font-weight: 900;
-    font-size: clamp(48px, 8vw, 112px);
+    font-size: clamp(44px, 7vw, 96px);
     line-height: 0.95;
     letter-spacing: -2px;
     color: var(--ink);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .headline .accent {
@@ -111,21 +108,21 @@
 
   .lead {
     font-weight: 400;
-    font-size: clamp(20px, 2.2vw, 28px);
+    font-size: clamp(18px, 1.9vw, 24px);
     line-height: 1.35;
     max-width: 680px;
-    margin-bottom: 48px;
+    margin-bottom: 28px;
   }
 
   .event-card {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 32px;
-    padding: 24px 32px;
+    gap: 28px;
+    padding: 18px 26px;
     background: var(--white);
     border: 2px solid var(--ink);
     border-radius: 6px;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
 
   .event-item {
@@ -224,12 +221,12 @@
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    padding: 22px 40px;
+    padding: 18px 34px;
     background: var(--ink);
     color: var(--white);
     font-family: 'Work Sans', sans-serif;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.5px;
     border: none;
     border-radius: 999px;
@@ -306,6 +303,15 @@
     color: var(--ink);
     letter-spacing: -1px;
     line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .theme-block .theme-copy {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+    max-width: 640px;
   }
 
   .about-blob-1 {
@@ -374,8 +380,7 @@
 
   .expect-card:nth-child(1) { background: var(--peach); color: var(--ink); }
   .expect-card:nth-child(2) { background: var(--yellow); color: var(--ink); }
-  .expect-card:nth-child(3) { background: var(--green); color: var(--white); }
-  .expect-card:nth-child(4) { background: var(--purple); color: var(--white); }
+  .expect-card:nth-child(3) { background: var(--purple); color: var(--white); }
 
   .expect-card h3 {
     font-weight: 900;
@@ -387,6 +392,83 @@
   .expect-card p {
     font-size: 16px;
     line-height: 1.45;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    padding: 40px 48px 120px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 40px;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: #fafafa;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .faq-item[open] {
+    background: var(--white);
+    border-color: var(--ink);
+  }
+
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 24px;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary::after {
+    content: "+";
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--purple);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] summary::after {
+    content: "−";
+  }
+
+  .faq-body {
+    padding: 0 24px 24px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .faq-body p { margin-bottom: 8px; }
+  .faq-body p:last-child { margin-bottom: 0; }
+  .faq-body ul {
+    margin: 4px 0 12px 20px;
+  }
+  .faq-body ul:last-child { margin-bottom: 0; }
+  .faq-body li {
+    margin-bottom: 2px;
   }
 
   /* ---------- Closing CTA ---------- */
@@ -444,6 +526,22 @@
   }
 
   .hashtag { font-weight: 700; }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+    transition: border-color 0.15s ease;
+  }
+  .footer-links a:hover { border-bottom-color: var(--purple); }
 
   /* ---------- Modal ---------- */
   .modal-overlay {
@@ -611,7 +709,7 @@
   }
 
   @media (max-width: 720px) {
-    .top-bar, .hero, .about, .expect, .closing, footer { padding-left: 24px; padding-right: 24px; }
+    .top-bar, .hero, .about, .expect, .faq, .closing, footer { padding-left: 24px; padding-right: 24px; }
     .modal { padding: 32px 24px; }
     .event-card { gap: 20px; padding: 18px 22px; }
   }
@@ -621,10 +719,9 @@
 
   <!-- Top bar -->
   <header class="top-bar">
-    <div class="logo">
-      <span class="logo-mark">WiT</span>
-      <span class="logo-descriptor">Women in Tech Finland</span>
-    </div>
+    <a class="logo" href="/" aria-label="Women in Tech Finland">
+      <img src="wit-logo-black.png" alt="Women in Tech Finland" />
+    </a>
     <span class="tagline">Tech belongs to us all</span>
   </header>
 
@@ -648,9 +745,9 @@
     </div>
 
     <div class="hero-inner">
-      <p class="eyebrow">WiT Forum 2026 · Our Flagship Event</p>
+      <p class="eyebrow">Women in Tech Forum 2026</p>
       <h1 class="headline">Tech Horizons:<br/><span class="accent">Impacting our Future</span></h1>
-      <p class="lead">A full day of keynotes, panels, workshops and meaningful conversations exploring how technology is shaping industries, careers and society.</p>
+      <p class="lead">A full day of keynotes, panels, workshops and honest conversations about where technology is taking us, and who gets to shape it.</p>
 
       <div class="event-card">
         <div class="event-item">
@@ -672,7 +769,7 @@
           Pre-sign up for the WiT community
           <span class="arrow">→</span>
         </button>
-        <span class="cta-note">Free to join. Be first in line for Forum 2026 updates.</span>
+        <span class="cta-note">Free to join. Be first to hear about Forum 2026.</span>
       </div>
     </div>
   </section>
@@ -691,13 +788,14 @@
     </div>
 
     <div class="about-inner">
-      <h2>The WiT Forum is back, stronger, sharper, more yours.</h2>
-      <p>The Forum is our flagship event, bringing together tech-focused companies, professionals and role models for a day of learning, networking and inspiration.</p>
-      <p>After another successful Forum in 2024, we are building on your feedback to make 2026 an even more memorable edition. Every stage of your career belongs here, from early-career tech professionals to senior executives.</p>
+      <h2>Everything you need to know before the big day.</h2>
+      <p>The Forum is our flagship event. One full day where member companies, professionals and role models from across the Finnish tech community land in the same room for learning, networking and honest conversation.</p>
+      <p>We have built this edition around what you told us you wanted more of. Every career stage belongs here, from first-year tech professionals to senior leaders, with an emphasis on women.</p>
 
       <div class="theme-block">
         <p class="label">Theme</p>
         <h3>Tech Horizons: Impacting our Future</h3>
+        <p class="theme-copy">Technology is reshaping industries, careers, and the society we all live in. Forum 2026 is where the community gets to look at that head on, and decide how we want to show up.</p>
       </div>
     </div>
   </section>
@@ -707,21 +805,83 @@
     <h2>What to expect</h2>
     <div class="expect-grid">
       <div class="expect-card">
-        <h3>Thought-provoking keynotes</h3>
-        <p>Industry leaders share the trends, research and ideas shaping the next decade of tech.</p>
+        <h3>Keynotes that stay with you</h3>
+        <p>Bright minds sharing the trends, research and stories shaping the next chapter of tech. Leave with something new to think about on the way home.</p>
       </div>
       <div class="expect-card">
-        <h3>Engaging panels</h3>
-        <p>Honest conversations about the real-world challenges of a more diverse and inclusive tech industry.</p>
+        <h3>Honest conversations</h3>
+        <p>Panels and workshops where real people talk about real work. Practical, generous, and happy to sit with the uncomfortable questions.</p>
       </div>
       <div class="expect-card">
-        <h3>Interactive workshops</h3>
-        <p>Hands-on sessions with practical, actionable insights you can apply the moment you leave the room.</p>
+        <h3>Your new favourite people</h3>
+        <p>Peers, mentors and role models from across the Finnish tech community, all in one room. Bring your questions and a full battery.</p>
       </div>
-      <div class="expect-card">
-        <h3>Community networking</h3>
-        <p>Meet peers, mentors and role models from across the Finnish tech ecosystem and beyond.</p>
-      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Frequently asked</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What's the dress code?</summary>
+        <div class="faq-body">
+          <p>There is no particular dress code. We recommend something you feel confident and comfortable in. You can, for example, wear your company's branded clothes.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Who are all the confirmed partners and speakers?</summary>
+        <div class="faq-body">
+          <p><strong>Platinum Partner</strong></p>
+          <ul>
+            <li>Accenture</li>
+          </ul>
+          <p><strong>Gold Partners</strong></p>
+          <ul>
+            <li>Knowit</li>
+            <li>Infosys</li>
+            <li>Vivicta</li>
+          </ul>
+          <p><strong>Bronze Partners</strong></p>
+          <ul>
+            <li>ABB</li>
+            <li>TEK</li>
+            <li>Tieto</li>
+            <li>SSAB</li>
+            <li>Next Games</li>
+            <li>Eficode</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Who is doing the catering? What's served for lunch?</summary>
+        <div class="faq-body">
+          <p>Wanha Satama's inhouse catering. The menu will be confirmed later.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Who are the main attendees? Students or?</summary>
+        <div class="faq-body">
+          <p>The event caters to all career stages, from early-career tech professionals to senior executives.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the event live-streamed?</summary>
+        <div class="faq-body">
+          <p>Yes, the stage program is going to be live-streamed.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the event free for attendees?</summary>
+        <div class="faq-body">
+          <p>Yes, the event is free for WiT Finland community members.</p>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -733,8 +893,8 @@
       </svg>
     </div>
     <div class="closing-inner">
-      <h2>Join the community.<br/>Shape the future.</h2>
-      <p>Pre-sign up to join the WiT community and get early access to Forum 2026.</p>
+      <h2>Tech belongs to us all.<br/>Let's build Forum 2026 together.</h2>
+      <p>Free to join. Pre-sign up and we will be in touch with the Forum 2026 programme, speakers and everything else from Women in Tech Finland.</p>
       <button class="cta" onclick="openModal()">
         Pre-sign up
         <span class="arrow">→</span>
@@ -743,12 +903,15 @@
   </section>
 
   <footer>
-    <div class="logo">
-      <span class="logo-mark">WiT</span>
-      <span class="logo-descriptor">Women in Tech Finland</span>
+    <a class="logo footer-logo" href="/" aria-label="Women in Tech Finland">
+      <img src="wit-logo-black.png" alt="Women in Tech Finland" />
+    </a>
+    <div class="footer-meta">
+      Wanha Satama, Pikku Satamakatu 3-5, 00160 Helsinki
     </div>
-    <div>
-      <span class="hashtag">#ibelongintech</span> · Wanha Satama, Pikku Satamakatu 3-5, 00160 Helsinki
+    <div class="footer-links">
+      <a href="https://womenintech.fi" target="_blank" rel="noopener">womenintech.fi</a>
+      <a href="https://docs.google.com/document/d/1siEe8r0FLLCOLXRJVrGjcUSfwYBlZSdMGPAMNoBeXXU/edit?usp=sharing" target="_blank" rel="noopener">Privacy policy</a>
     </div>
   </footer>
 
@@ -758,7 +921,7 @@
       <button class="close-btn" onclick="closeModal()" aria-label="Close">×</button>
       <div id="form-state">
         <h2 id="modal-title">Join the WiT community</h2>
-        <p class="sub">Free to join. We will share Forum 2026 updates, events and opportunities directly with you.</p>
+        <p class="sub">Free to join. You will be first to hear about Forum 2026 and everything else happening at Women in Tech Finland.</p>
 
         <form id="signup-form" onsubmit="handleSubmit(event)">
           <div class="field">
@@ -854,8 +1017,8 @@
       </div>
 
       <div class="success" id="success">
-        <h3>Welcome to the community.</h3>
-        <p>You are on the list. We will be in touch with Forum 2026 details and community updates.</p>
+        <h3>Welcome in.</h3>
+        <p>You are on the list. We will be in touch with Forum 2026 details and everything coming up at Women in Tech Finland.</p>
       </div>
     </div>
   </div>
